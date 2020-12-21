@@ -1,6 +1,12 @@
+
+** UPDATE Dec 2020 **
+
+I (Brooks Paige) modified this to be more consistent with the current branding guidelines for the banner and page margins, at https://www.ucl.ac.uk/cam/brand/guidelines/banner.
+
+Original readme as follows.
+
 UCL LaTeX Letter template
 ======================
-
 by Simon Byrne
 
 These files provide a letter template that is a close approximation to the

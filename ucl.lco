@@ -1,16 +1,22 @@
-\ProvidesFile{ucl.lco}[2013/05/06 UCL letter template (Simon Byrne)]
+\ProvidesFile{ucl.lco}[2020/12/21 UCL A4 template (Updated Brooks Paige)] % 2013/05/06 UCL letter template (Simon Byrne)]
 \RequirePackage{graphicx}
+\RequirePackage{color}
+\RequirePackage{tikz}
 \RequirePackage{helvet}
 \RequirePackage[UKenglish]{babel}
 
 \renewcommand{\familydefault}{\sfdefault}
 \KOMAoptions{fontsize=10pt}
+\KOMAoptions{foldmarks=false}
+
+
+\@setplength{toaddrhpos}{1cm}
 
 % this needs to be set to a value < \paperwidth to avoid centering
-\@setplength{firstheadvpos}{1cm}
-\@setplength{firstheadhpos}{1cm}
+\@setplength{firstheadvpos}{0cm}
+\@setplength{firstheadhpos}{0cm}
 \@setplength{firstheadwidth}{\paperwidth}
-\@addtoplength{firstheadwidth}{-2cm}
+\@addtoplength{firstheadwidth}{2cm}
 
 \@setplength{firstfootvpos}{\paperheight}
 \@addtoplength{firstfootvpos}{-1cm}
@@ -23,21 +29,26 @@
   \@addtoplength[-]{firstfootvpos}{\@tempdima}}
 
 
-% \fontsize{10pt}{10pt}
-\newkomafont{headtitle}{\sffamily\bfseries}
-\newkomafont{headsubtitle}{\sffamily}
+\newkomafont{headtitle}{\fontsize{10pt}{11pt}\color{white}\sffamily\bfseries}
+\newkomafont{headsubtitle}{\color{white}\sffamily}
+\setkomafont{fromaddress}{\fontsize{9pt}{10pt}\sffamily}
 \newkomavar{headtitle}
 \newkomavar{headsubtitle}
 
 \setkomavar{firsthead}{%
-  {\usekomafont{headtitle}\usekomavar{headtitle}\\}
-  {\usekomafont{headsubtitle}\usekomavar{headsubtitle}\\}
-  \noindent\hspace*{-\useplength{firstheadhpos}}%
-  \includegraphics[width=\paperwidth]{uclbanner-outline}%
+\begin{tikzpicture}%
+\node[anchor=north east, inner sep=0] (X) at (0,0){\includegraphics[width=21.03cm]{uclbanner-black.pdf}};%
+\node[text width=80mm, anchor=north east, inner sep=0] (T) at (-12,-1){{\usekomafont{headtitle}{\usekomavar{headtitle}\\ \usekomavar{headsubtitle}}}};%
+\end{tikzpicture}
+%  {\usekomafont{headtitle}\usekomavar{headtitle}\\}
+%  {\usekomafont{headsubtitle}\usekomavar{headsubtitle}\\}
+%  \noindent\hspace*{-\useplength{firstheadhpos}}%
+%  \includegraphics[width=\paperwidth]{uclbanner-outline.pdf}%
 }
 
 \setkomavar{firstfoot}{%
-  \parbox[b]{\useplength{firstfootwidth}}{\raggedright
+  \parbox[b]{\useplength{firstfootwidth}}{
+  \raggedright
   {\usekomafont{fromaddress}\usekomavar{fromaddress}
   \ifkomavarempty{fromphone}{%
     \ifkomavarempty{fromfax}{}{%
@@ -48,13 +59,13 @@
     \ifkomavarempty{fromfax}{}{%
       \quad\usekomavar*{fromfax}\usekomavar{fromfax}%
     }
-  }
+  }%
   \ifkomavarempty{fromemail}{}{%
     \\\usekomavar{fromemail}%
   }
   \ifkomavarempty{fromurl}{}{%
     \\\usekomavar{fromurl}%
-  }}}%
+  }\\}}%
   \ifkomavarempty{fromlogo}{}{\llap{\usekomavar{fromlogo}}}
 }
 
