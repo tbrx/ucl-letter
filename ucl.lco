@@ -1,6 +1,7 @@
 \ProvidesFile{ucl.lco}[2020/12/21 UCL A4 template (Updated Brooks Paige)] % 2013/05/06 UCL letter template (Simon Byrne)]
 \RequirePackage{graphicx}
 \RequirePackage{color}
+\RequirePackage{parskip}
 \RequirePackage{tikz}
 \RequirePackage{helvet}
 \RequirePackage[UKenglish]{babel}
@@ -9,8 +10,13 @@
 \KOMAoptions{fontsize=10pt}
 \KOMAoptions{foldmarks=false}
 
+% Use larger DIV for full-width body text
+%\KOMAoptions{DIV=15,BCOR=-1.8mm}
+%\KOMAoptions{DIV=27,BCOR=-1.8mm}
 
 \@setplength{toaddrhpos}{1cm}
+\@setplength{toaddrvpos}{3.3cm}
+\@setplength{refvpos}{7cm}
 
 % this needs to be set to a value < \paperwidth to avoid centering
 \@setplength{firstheadvpos}{0cm}
